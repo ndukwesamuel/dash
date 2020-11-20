@@ -35,7 +35,6 @@ def product(request):
 
 def customer(request,id_test):
     customer = Customer.objects.get(id=id_test)
-
     orders = customer.order_set.all()
     order_count = orders.count()
 
@@ -43,8 +42,9 @@ def customer(request,id_test):
 
     return render(request, 'customer.html',context)
 
-def create_ord(request):
-    form = OrderForm()
+def create_ord(request, id_test):
+    customer = Customer.objects.get(id=id_test)
+    form = OrderForm(initial={'customer':customer})
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
