@@ -1,0 +1,51 @@
+{%  extends "base.html"  %}
+{% block content %}
+{% load static %}
+
+<div class="header"> 
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'images/logo.png' %}" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'product' %}">Products</a></li>
+                    <li><a href="{% url 'about'  %}">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="{% url 'account' %}">Account</a></li>
+                </ul>
+            </nav>
+
+
+            <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+            
+            <img src="{% static 'images/menu.png' %} " alt="sam"class="menu-icon" onclick="menutoggle()">
+
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <h1> Give Your Workout <br> A New Style</h1>
+                <p> Success isn't always about greatness. It's about
+                consistency. Consistent <br> hard work gains sucess. greatness
+                will come.</p>
+                <a href="" class="btn"> Explore Now &#8594;</a>
+
+            </div>
+            <div class="col-2">
+                <img src="{% static 'images/image1.png' %}" alt="">
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime porro ex delectus itaque accusamus deleniti, eveni
+et expedita obcaecati fuga, incidunt aliqui
+d suscipit, deserunt repudiandae dolorem voluptate commodi earum nam. Fuga!
+
+
+
+
+{%  endblock %}

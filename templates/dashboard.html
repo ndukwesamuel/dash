@@ -1,0 +1,181 @@
+{%  extends "base.html"  %}
+{% block content %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+
+<style>
+    h3{
+        color: blue;
+    }
+
+    h5{
+        color: red;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="{% static 'images/logo.png' %}" alt="">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ml-4" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'product' %}">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">oga</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    <br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Orders</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_orders}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	    
+    <div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">total customer</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_customers}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Delivered</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{delivered}}</h3>
+			  	</div>
+			</div>
+		</div>
+    </div>
+
+    
+
+    <div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders out of delevery</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{out_of_delivered}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Pending</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{pending}}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+                    <th>link</th>
+					<th>Customer</th>
+					<th>Phone</th>
+
+				</tr>	
+						{% for customer in customers	%}
+							<tr>
+                                <td><a href="{% url 'customer' customer.id	%}">view</a></td>
+								<td>{{customer.name}}</td>
+								<td>{{customer.phone}}</td>
+							</tr>
+						{% endfor	%}
+	
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{%url 'create_ord'%}"> create order</a>
+		<table class="table table-sm">
+				<tr>
+                    <th>customer</th>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+					
+						{% for order in orders	%}
+                    <tr>
+                        <td>{{order.customer}}</td>
+                        <td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+						<td class="btn" ><a href="{% url 'update_ord' order.id%}">Update</a></td>
+						<td><a class="btn" href="{% url 'delete_form' order.id %}">del</a></td>
+						
+
+					</tr>
+						{% endfor %}
+						
+                        
+                        
+					
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{%  endblock %}

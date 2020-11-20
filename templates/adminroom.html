@@ -1,0 +1,36 @@
+{%  extends "base.html"  %}
+{% block content %}
+{% load static %}
+
+
+<div class='container'> 
+
+        <div class='row'>
+            <div class='col-4'>
+                <h3>this is for product</h3>
+                <h1>creat a new item</h1>  <h1>update the item </h1> <h1>delete item</h1>
+
+                this is for the admin no one can get here
+                {% for i in product %}
+                <p>{{i.name}}</p>
+                <p>{{i.description}}</p>
+                <p>{{i.price}}</p>
+                <img src="{{i.product_pic.url}}" alt="" width=100>
+                <a href="{% url 'productpage' i.id %}"><h1>link</h1></a>
+            
+                <h1>delte</h1>
+               <h1> update</h1>
+                {% endfor %}
+            
+
+            </div>
+
+        </div>
+
+
+   
+
+</div>
+
+
+    {%  endblock %}
