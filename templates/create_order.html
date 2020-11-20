@@ -1,0 +1,29 @@
+{%  extends "base.html"  %}
+{% block content %}
+{% load static %}
+
+
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. At praesentium accusamus aperiam? Et error odit provident, nulla enim voluptas esse autem eveniet aliquid tenetur sint culpa est commodi expedita! Dolores!
+
+
+
+<form action="" method="post">
+    {%  csrf_token %}
+    <!-- we had an erro to save all the form at once due to form set managemnet -->
+    <!-- {{formset.management_form}}
+    {%for form in formset  %}
+        {{form}}
+    {% endfor  %} -->
+
+    {{form.as_p }}
+    <input type="submit" value="submit">
+
+</form>
+
+<h1>{{bad}}</h1>
+
+
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, sequi officia adipisci explicabo similique doloribus maiores? Aliquam ex ad velit eos vero soluta, ducimus commodi quos suscipit minus. Sint, architecto.
+
+{% endblock %}
